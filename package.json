@@ -1,0 +1,17 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.4.0",
+    "koa-static-cache": "^5.1.4",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "co": "^4.6.0",
+    "koa-swig": "^2.2.1"
+  }
+}
