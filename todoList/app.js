@@ -11,21 +11,22 @@ const app = new Koa()
  *
  */
 const data = {
-  skin: 'other',
-  users: [
+  skin: 'index',
+  appName: '你是谁',
+  tasks: [
     {
-      name: 'nihao',
-      age: 12
+      title: 'nihao',
+      done: true
     },
     {
-      name: 'nihao1',
-      age: 13
+      title: 'nihao1',
+      done: false
     }
   ]
 }
 
 /**
- * 2. 设置模板引擎
+ * 1. 设置模板引擎
  */
 app.context.render = co.wrap(new Swig({
   root: `${__dirname}/views`,
@@ -34,7 +35,7 @@ app.context.render = co.wrap(new Swig({
 }))
 
 /**
- * 3.加载静态资源
+ * 2.加载静态资源
  */
 
 app.use(new StaticCache('./static', {
@@ -44,10 +45,15 @@ app.use(new StaticCache('./static', {
 
 
 /**
- * 1.设计路由
+ * 3.设计路由
  */
 router.get('/', async (ctx) => {
   ctx.body = await ctx.render('index.html', {data})
+})
+
+// add task
+router.get('/add', async (ctx) => {
+  ctx.body = await ctx.render('add.html', {data})
 })
 
 app.use(router.routes())

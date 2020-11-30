@@ -8,10 +8,25 @@
   <link rel="stylesheet" href="/static/{{data.skin}}.css">
 </head>
 <body>
-  <h1>1</h1>
+  <h1>TodoList</h1>
+  <a href="/add">Add Task</a>
   <ul>
-    {% for user in data.users %}
-    <li>{{ user.name }}</li>
+    {% for task in data.tasks %}
+      {% if task.done %}
+        {% set name = 'done' %}
+        <li class="{{name}}">
+          <input type="checkbox" checked>
+          {{ task.title }}
+          <a href="">Delete</a>
+        </li>
+      {% else %}
+        {% set name = '' %}
+        <li class="{{name}}">
+          <input type="checkbox">
+          {{ task.title }}
+          <a href="">Delete</a>
+        </li>
+      {% endif %}
     {% endfor %}
   </ul>
 </body>
