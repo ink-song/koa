@@ -15,6 +15,7 @@
   "devDependencies": {
     "co": "^4.6.0",
     "koa-static-cache": "^5.1.4",
+    "koa-bodyparser": "^4.3.0",
     "koa-swig": "^2.2.1"
   }
 }

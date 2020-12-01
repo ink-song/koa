@@ -4,16 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/static/{{data.skin}}.css">
   <title>Document</title>
 </head>
 <body>
-  <h1>{{data.appName}}</h1>
-  <a href="">Add New Task</a>
-  <br>
-  <form action="/posttask" method="POST">
-    <input type="text" name="title">
-    <button>confirm</button>
-  </form>
+  <h1>{{ message }}</h1>
+  <a href="{{href}}">点击这跳转</a>
 </body>
 </html>
