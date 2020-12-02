@@ -15,19 +15,24 @@
       {% if task.done %}
         {% set name = 'done' %}
         <li class="{{name}}">
-          <input type="checkbox" checked>
+          <input type="checkbox" onclick="change({{ task.id }})" checked>
           {{ task.title }}
-          <a href="">Delete</a>
+          <a href="/delete/{{task.id}}">Delete</a>
         </li>
       {% else %}
         {% set name = '' %}
         <li class="{{name}}">
-          <input type="checkbox">
+          <input type="checkbox" onclick="change({{ task.id }})">
           {{ task.title }}
-          <a href="">Delete</a>
+          <a href="/delete/{{task.id}}">Delete</a>
         </li>
       {% endif %}
     {% endfor %}
   </ul>
 </body>
+<script>
+  function change(id) {
+    window.location.href = `/change/${id}`
+  }
+</script>
 </html>

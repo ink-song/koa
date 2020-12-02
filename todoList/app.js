@@ -14,14 +14,17 @@ const app = new Koa()
 const data = {
   skin: 'index',
   appName: '你是谁',
+  maxId: 5,
   tasks: [
     {
       title: 'nihao',
-      done: true
+      done: true,
+      id: 1
     },
     {
       title: 'nihao1',
-      done: false
+      done: false,
+      id: 2
     }
   ]
 }
@@ -88,5 +91,31 @@ router.post('/posttask', async (ctx) => {
     href: '/'
   })
 })
+
+/**
+ * 更改勾选状态
+ * 
+ */
+router.get('/change/:id', async (ctx) => {
+  data.tasks.forEach((i) => { 
+    if(i.id == ctx.params.id) { return i.done = !i.done }
+   })
+  ctx.response.redirect('/')
+})
+
+/**
+ * 删除当前数据
+ * 
+ */
+router.get('/delete/:id', async (ctx) => {
+  data.tasks = data.tasks.filter((i, index) => {
+    return i.id != ctx.params.id
+  })
+  ctx.body = await ctx.render('message', {
+    message: '删除成功',
+    href: '/'
+  })
+})
+
 app.use(router.routes())
 app.listen(80)
